@@ -1,32 +1,19 @@
+import React from "react";
 import './App.css';
+import Header from "./components/Header/Header";
+import Dialogs from "./components/Dialogs/Dialogs";
+import Navbar from "./components/Navbar/Navbar";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
     return (
-        <div>
+        <div className='app-wrapper'>
             <Header/>
-            <Technologies/>
-        </div>
-    );
-}
-
-const Header = () => {
-    return (
-        <div className="App">
-            <ul>
-                <li>Simple list 1</li>
-                <li>Simple list 2</li>
-                <li>Simple list 3</li>
-            </ul>
-        </div>
-    );
-}
-
-const Technologies = () => {
-    return (
-        <div>
-            <a href='#s'>Home</a>
-            <a href='#s'>News</a>
-            <a href='#s'>Messages</a>
+            <Navbar/>
+            <div className='app-wrapper-content'>
+                <Profile/>
+                <Dialogs/>
+            </div>
         </div>
     );
 }
