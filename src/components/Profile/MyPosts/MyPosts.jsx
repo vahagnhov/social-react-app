@@ -3,6 +3,15 @@ import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+
+    let postData = [
+        {id: 1, message: 'Hello, how are you?', likesCount: 8},
+        {id: 2, message: 'This is my first Post', likesCount: 50},
+        {id: 3, message: 'This is my second Post', likesCount: 0}
+    ];
+
+    let postsElements = postData.map(p => <Post id={p.id} message={p.message} likes_count={p.likesCount}/>);
+
     return (
         <div className={s.postsBlock}>
             <h2>My Posts</h2>
@@ -16,9 +25,7 @@ const MyPosts = () => {
                 <button>Remove</button>
             </div>
             <div className={s.posts}>
-                <Post message='Hello, how are you?' likes_count='8'/>
-                <Post message='This is my first Post' likes_count='50'/>
-                <Post message='This is my second Post' likes_count='0'/>
+                {postsElements}
             </div>
         </div>
     );
