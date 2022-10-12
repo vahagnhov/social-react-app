@@ -3,5 +3,6 @@
     background-color: green;
 }
 .header img {
+    padding: 5px;
     width: 50px;
 }

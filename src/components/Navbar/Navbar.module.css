@@ -4,11 +4,25 @@
     padding: 20px;
 }
 
-.item a{
-  color: white;
+.item a {
+    color: white;
     text-decoration: none;
 }
 
 .item a.activeLink {
     color: gold;
+}
+
+.friend {
+    color: white;
+}
+
+.friendBlock {
+    float: right;
+}
+
+.friend img {
+    padding: 5px;
+    width: 43px;
+    border-radius: 50%;
 }
