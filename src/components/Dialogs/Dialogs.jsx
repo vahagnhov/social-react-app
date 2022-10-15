@@ -2,19 +2,25 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialogItem from './../Dialogs/DialogItem/DialogItem';
 import Message from './../Dialogs/Message/Message';
-import {addMessageActionCreator} from "../../redux/state";
+import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../redux/state";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.state.dialogs.map(d => <DialogItem id={d.id} name={d.name} imgSrc={d.imgSrc}/>);
-    let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>);
+    let state = props.store.getState().dialogsPage;
+    let dialogsElements = state.dialogs.map(d => <DialogItem id={d.id} name={d.name} imgSrc={d.imgSrc}/>);
+    let messagesElements = state.messages.map(m => <Message id={m.id} message={m.message}/>);
 
-    let newMessageElement = React.createRef();
-    let addMessage = () => {
-      let text = newMessageElement.current.value;
-      let action = addMessageActionCreator(text);
-      props.dispatch(action);
-      newMessageElement.current.value = '';
+    let newMessageBody = state.newMessageBody;
+
+    let addSendMessageClick = () => {
+      let action = sendMessageActionCreator();
+      props.store.dispatch(action);
+    };
+
+    let onMessageChange = (e) => {
+        let text = e.target.value;
+        let action = updateNewMessageBodyActionCreator(text);
+        props.store.dispatch(action);
     };
 
     return (
@@ -24,10 +30,10 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 <div>
-                    <textarea ref={newMessageElement}></textarea>
+                    <textarea placeholder='Enter your message' value={newMessageBody} onChange={onMessageChange}/>
                 </div>
                 <div>
-                    <button onClick={addMessage}>Add Message</button>
+                    <button onClick={addSendMessageClick}>Add Message</button>
                 </div>
                 {messagesElements}
             </div>
