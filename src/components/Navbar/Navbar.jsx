@@ -15,7 +15,7 @@ const Friend = (props) => {
 
 const Navbar = (props) => {
 
-    let state = props.store.getState().sidebar;
+    let state = props.sidebar;
     let friends = state.friends.map(f => <Friend id={f.id} name={f.name} imgSrc={f.imgSrc}/>)
 
     return (
