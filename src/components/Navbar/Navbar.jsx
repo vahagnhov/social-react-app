@@ -16,7 +16,7 @@ const Friend = (props) => {
 const Navbar = (props) => {
 
     let state = props.sidebar;
-    let friends = state.friends.map(f => <Friend id={f.id} name={f.name} imgSrc={f.imgSrc}/>)
+    let friends = state.friends.map(f => <Friend key={f.id} id={f.id} name={f.name} imgSrc={f.imgSrc}/>)
 
     return (
         <nav className={s.nav}>
