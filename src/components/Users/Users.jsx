@@ -3,17 +3,19 @@ import s from './Users.module.css';
 import axios from "axios";
 import userNoPhoto from '../../assets/images/user.png';
 
-let Users = (props) => {
-    if(props.users.length === 0) {
+class Users extends React.Component {
+    constructor(props) {
+        super(props);
+
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.setUsers(response.data.items);
+            this.props.setUsers(response.data.items);
         });
     }
 
-    return (
-        <div>
+    render() {
+        return <div>
             {
-                props.users.map(u =>
+                this.props.users.map(u =>
                     <div key={u.id}>
                         <span>
                              <div>
@@ -27,10 +29,10 @@ let Users = (props) => {
                         <div>
                              {u.followed
                                  ? <button onClick={() => {
-                                     props.unFollow(u.id)
+                                     this.props.unFollow(u.id)
                                  }}>UnFollow</button>
                                  : <button onClick={() => {
-                                     props.follow(u.id)
+                                     this.props.follow(u.id)
                                  }}>Follow</button>}
                         </div>
                         </span>
@@ -49,7 +51,7 @@ let Users = (props) => {
                 )
             }
         </div>
-    );
+    }
 }
 
 export default Users;
