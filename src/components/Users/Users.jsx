@@ -7,14 +7,51 @@ class Users extends React.Component {
     constructor(props) {
         super(props);
     }
+
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users', {
+            params: {
+                count: this.props.pageSize,
+                page: this.props.currentPage
+            }
+        }).then(response => {
+            this.props.setUsers(response.data.items);
+            this.props.setUsersTotalCount(response.data.totalCount);
+        });
+    }
+
+    onPageChange = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get('https://social-network.samuraijs.com/api/1.0/users', {
+            params: {
+                count: this.props.pageSize,
+                page: pageNumber
+            }
+        }).then(response => {
             this.props.setUsers(response.data.items);
         });
     }
 
+
     render() {
+        let pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = [];
+        for (let i = 1; i <= pageCount; i++) {
+            pages.push(i);
+        }
+
         return <div>
+            <div>
+                <div><span>{this.props.totalUsersCount}</span> </div>
+                {pages.map(p => {
+                    return <span className={`${s.paginationElement} ${this.props.currentPage === p ? s.selectedPage : ''}`}
+                                 onClick={(e) => {
+                                     this.onPageChange(p)
+                                 }}>{p}</span>
+                })
+                }
+            </div>
             {
                 this.props.users.map(u =>
                     <div key={u.id}>
@@ -42,10 +79,6 @@ class Users extends React.Component {
                             <span>
                                 <div>{u.name}</div>
                                 <div>{u.status}</div>
-                            </span>
-                            <span>
-                                <div>"u.location.country"</div>
-                                <div>"u.location.city"</div>
                             </span>
                         </span>
                     </div>
