@@ -4,7 +4,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import userNoPhoto from '../../../assets/images/user.png';
 
 const ProfileInfo = (props) => {
-    if(!props.profile){
+    if (!props.profile) {
         return <Preloader/>
     }
     return (
@@ -15,8 +15,21 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.descriptionBlock}>
                 <img alt='avatar'
-                     src={props.profile.photos && props.profile.photos.large? props.profile.photos.large : userNoPhoto}/>
-                Avatar + Desc
+                     src={props.profile.photos && props.profile.photos.large ? props.profile.photos.large : userNoPhoto}/>
+                <div>
+                    <div>
+                        <h2>{props.profile.fullName}</h2>
+                    </div>
+                    <div>
+                        <span>{props.profile.status ? 'Status -' + props.profile.status : ''}</span>
+                    </div>
+                    <div>
+                        <span>{props.profile.lookingForAJob
+                            ? <span>{props.profile.lookingForAJobDescription}</span>
+                            : ''}
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     );
