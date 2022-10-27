@@ -3,10 +3,6 @@ import s from './Post.module.css';
 
 const Post = (props) => {
 
-    ///console.log(props.message);
-
-    ///debugger;
-
     return (
         <div className={s.item}>
             <img alt='user-avatar'
