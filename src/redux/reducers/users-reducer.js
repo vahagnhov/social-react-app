@@ -45,17 +45,17 @@ export const usersReducer = (state = initialState, action) => {
         case SET_CURRENT_PAGE:
             return {
                 ...state,
-                currentPage: [action.currentPage]
+                currentPage: action.currentPage
             }
         case SET_USERS_COUNT:
             return {
                 ...state,
-                totalUsersCount: [action.usersCount]
+                totalUsersCount: action.usersCount
             }
         case TOGGLE_IS_FETCHING:
             return {
                 ...state,
-                isFetching: [action.isFetching]
+                isFetching: action.isFetching
             }
         default:
             return state;
