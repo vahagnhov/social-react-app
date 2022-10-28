@@ -5,13 +5,19 @@
 }
 
 .paginationElement {
+    display: inline-block;
     cursor: pointer;
     padding: 5px;
+    margin: 3px;
     border: 1px solid black;
-    border-radius: 50%;
+    border-radius: 12%;
+    background-color: burlywood;
 }
 
 .selectedPage {
     font-weight: bold;
     cursor: pointer;
+    border: 2px solid white;
+    background-color: green;
+    color: white;
 }
