@@ -15,6 +15,7 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
         axios.get('https://social-network.samuraijs.com/api/1.0/users', {
+            withCredentials: true,
             params: {
                 count: this.props.pageSize,
                 page: this.props.currentPage
@@ -30,6 +31,7 @@ class UsersContainer extends React.Component {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
         axios.get('https://social-network.samuraijs.com/api/1.0/users', {
+            withCredentials: true,
             params: {
                 count: this.props.pageSize,
                 page: pageNumber
