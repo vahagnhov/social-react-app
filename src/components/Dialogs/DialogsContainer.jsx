@@ -1,19 +1,20 @@
-import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../redux/reducers/dialogs-reducer";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/reducers/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
-        dialogPage: state.dialogsPage
+        dialogPage: state.dialogsPage,
+        isAuth: state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch) => {
     return {
         sendMessage: () => {
-            dispatch( sendMessageActionCreator())
+            dispatch( sendMessageAC())
         },
         updateMessageBody: (body) => {
-            dispatch( updateNewMessageBodyActionCreator(body))
+            dispatch( updateNewMessageBodyAC(body))
         },
     }
 }
