@@ -1,7 +1,7 @@
 import {APIBaseUrlInstance} from "./config";
 
 export const authAPI = {
-    login: () => {
+    authMe: () => {
         return APIBaseUrlInstance.get( `/auth/me`, {})
             .then(response => response.data);
     }
