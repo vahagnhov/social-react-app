@@ -2,10 +2,9 @@ import {APIBaseUrlInstance} from "./config";
 
 export const followAPI = {
     followUser: (userId) => {
-        return APIBaseUrlInstance.post(`/follow/${userId}`, {}, {})
-            .then(response => response.data);
+        return APIBaseUrlInstance.post(`/follow/${userId}`);
     },
     unfollowUser:(userId) => {
-        return APIBaseUrlInstance.delete(`/follow/${userId}`, {}).then(response => response.data);
+        return APIBaseUrlInstance.delete(`/follow/${userId}`);
     }
 }

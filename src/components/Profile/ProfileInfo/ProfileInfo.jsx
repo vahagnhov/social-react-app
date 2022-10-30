@@ -17,13 +17,13 @@ const ProfileInfo = (props) => {
             <div className={s.descriptionBlock}>
                 <img alt='avatar'
                      src={props.profile.photos && props.profile.photos.large ? props.profile.photos.large : userNoPhoto}/>
-                <ProfileStatus status={'Hello My friend'}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 <div>
                     <div>
                         <h2>{props.profile.fullName}</h2>
                     </div>
                     <div>
-                        <span>{props.profile.status ? 'Status -' + props.profile.status : ''}</span>
+                        <span>{props.profile.aboutMe ? props.profile.aboutMe : ''}</span>
                     </div>
                     <div>
                         <span>{props.profile.lookingForAJob

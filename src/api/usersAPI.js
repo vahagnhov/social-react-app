@@ -7,6 +7,6 @@ export const usersAPI = {
                 count: pageSize,
                 page: currentPage
             }
-        }).then(response => response.data);
+        });
     }
 }
