@@ -30,20 +30,18 @@ export const authReducer = (state = initialState, action) => {
     }
 };
 
-export const setAuthUserData = (userId, email, login, isAuth) => ({
+export const setAuthUserData = (userId, email, login, isAuth, captchaUrl) => ({
     type: SET_USER_DATA,
-    payload: {userId, email, login, isAuth}
+    payload: {userId, email, login, isAuth, captchaUrl}
 });
 
-export const getAuthUserData = () => {
-    return (dispatch) => {
-        authAPI.authMe().then(response => {
-            if (response.data.resultCode === 0) {
-                let {id, login, email} = response.data.data;
-                dispatch(setAuthUserData(id, email, login, true));
-            }
-        });
-    }
+export const getAuthUserData = () => (dispatch) => {
+    return authAPI.authMe().then(response => {
+        if (response.data.resultCode === 0) {
+            let {id, login, email} = response.data.data;
+            dispatch(setAuthUserData(id, email, login, true, false));
+        }
+    });
 }
 
 export const login = (email, password, rememberMe, captcha) => {
@@ -51,10 +49,10 @@ export const login = (email, password, rememberMe, captcha) => {
         authAPI.login(email, password, rememberMe, captcha).then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData());
-            }else{
+            } else {
                 let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : 'Some Error';
                 dispatch(stopSubmit('login', {_error: errorMessage}));
-                if(response.data.resultCode === 10){
+                if (response.data.resultCode === 10) {
                     getCaptchaUrl(dispatch);
                 }
             }
@@ -66,7 +64,7 @@ export const logout = () => {
     return (dispatch) => {
         authAPI.logout().then(response => {
             if (response.data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false));
+                dispatch(setAuthUserData(null, null, null, false, false));
             }
         });
     }
