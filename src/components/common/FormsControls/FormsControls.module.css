@@ -4,5 +4,10 @@
 }
 
 .formControl.error span {
-    color: #f02849;
+    color: rebeccapurple;
+}
+
+.formSummaryError {
+    padding: 5px;
+    color: rebeccapurple;
 }
