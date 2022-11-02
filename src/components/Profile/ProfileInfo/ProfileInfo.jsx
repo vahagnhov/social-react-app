@@ -2,7 +2,7 @@ import React from "react";
 import s from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import userNoPhoto from '../../../assets/images/user.png';
-import ProfileStatus from './ProfileStatus';
+import ProfileStatusWitHooks from "./ProfileStatusWitHooks";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
             <div className={s.descriptionBlock}>
                 <img alt='avatar'
                      src={props.profile.photos && props.profile.photos.large ? props.profile.photos.large : userNoPhoto}/>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWitHooks status={props.status} updateStatus={props.updateStatus}/>
                 <div>
                     <div>
                         <h2>{props.profile.fullName}</h2>
