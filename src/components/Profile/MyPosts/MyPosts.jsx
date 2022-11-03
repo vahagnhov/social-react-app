@@ -12,7 +12,7 @@ const AddNewPostForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field name='newPostText' component={Textarea} placeholder='Post Message'
-                validate={[required, maxLength10]}/>
+                       validate={[required, maxLength10]}/>
             </div>
             <div>
                 <button>Add Post</button>
@@ -26,7 +26,19 @@ const AddNewPostReduxForm = reduxForm({form: 'profileAddNewPostForm'})(AddNewPos
 
 const MyPosts = (props) => {
 
-    let postsElements = props.posts.map(p => <Post key={p.id} id={p.id} message={p.message} likes_count={p.likesCount}/>);
+    /*
+    For new versions of React js (starting from 2021) we may not use these features.
+       For old versions of react to get rid of the redraw component if there are no updates in props or states
+          1) If we are using a class component, we have 2 options use
+               a) shouldComponentUpdate(nextProps, nextState, nextContext) {
+                  return nextProps!=this.props || next state = this.state;
+              }
+              b) extend from React.PureComponent.
+          2) For a functional component, we can wrap React.memo((props) => {})
+    */
+
+    let postsElements = props.posts.map(p => <Post key={p.id} id={p.id} message={p.message}
+                                                   likes_count={p.likesCount}/>);
 
     let onAddPost = (formData) => {
         props.addPost(formData.newPostText);
