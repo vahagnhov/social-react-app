@@ -37,7 +37,7 @@ const MyPosts = (props) => {
           2) For a functional component, we can wrap React.memo((props) => {})
     */
 
-    let postsElements = props.posts.map(p => <Post key={p.id} id={p.id} message={p.message}
+    let postsElements = [...props.posts].reverse().map(p => <Post key={p.id} id={p.id} message={p.message}
                                                    likes_count={p.likesCount}/>);
 
     let onAddPost = (formData) => {
