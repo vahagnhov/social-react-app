@@ -8,21 +8,25 @@ import {Navigate} from "react-router-dom";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-    }
-
-    render() {
         let userId = this.props.router.params.userId;
         if (!userId) {
             if(this.props.isAuth){
                 userId = this.props.authorizedUserId;
-            }else{
-                return <Navigate
-                    to="/login"
-                />;
             }
         }
-        this.props.getUserProfile(userId);
-        this.props.getStatus(userId);
+        if(userId){
+            this.props.getUserProfile(userId);
+            this.props.getStatus(userId);
+        }
+    }
+
+    render() {
+
+        if (!this.props.router.params.userId && !this.props.authorizedUserId) {
+            return <Navigate
+                to="/login"
+            />;
+        }
 
         return <Profile {...this.props}
                         profile={this.props.profile}
