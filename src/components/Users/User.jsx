@@ -23,12 +23,12 @@ const User = (props) => {
                              ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
                                  props.unFollow(u.id);
 
-                             }}>UnFollow</button>
+                             }} className={s.followButton}>UnFollow</button>
 
 
                              : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
                                  props.follow(u.id);
-                             }}>Follow</button>}
+                             }} className={s.followButton}>Follow</button>}
                     </div>
               </span>
             <span>
