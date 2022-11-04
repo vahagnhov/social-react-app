@@ -1,4 +1,8 @@
-.paginationElement {
+.paginator {
+    margin: 10px;
+}
+
+.pageNumber {
     display: inline-block;
     cursor: pointer;
     padding: 5px;
@@ -8,10 +12,14 @@
     background-color: burlywood;
 }
 
-.selectedPage {
+.pageNumber.selectedPage {
     font-weight: bold;
     cursor: pointer;
     border: 2px solid white;
     background-color: green;
     color: white;
+}
+
+.arrow {
+    cursor: pointer;
 }
