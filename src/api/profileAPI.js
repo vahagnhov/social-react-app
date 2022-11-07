@@ -9,5 +9,12 @@ export const profileAPI = {
     },
     updateStatus: (status) => {
         return APIBaseUrlInstance.put(`/profile/status`, {status: status});
+    },
+    updatePhoto: (photoFile) => {
+        const formData = new FormData();
+        formData.append('image', photoFile);
+        return APIBaseUrlInstance.put(`/profile/photo`, formData, {
+            headers: {'Content-Type': 'multipart/form-data'}
+        });
     }
 }

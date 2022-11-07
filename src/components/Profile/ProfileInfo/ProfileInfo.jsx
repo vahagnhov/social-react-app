@@ -4,26 +4,33 @@ import Preloader from "../../common/Preloader/Preloader";
 import userNoPhoto from '../../../assets/images/user.png';
 import ProfileStatusWitHooks from "./ProfileStatusWitHooks";
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto}) => {
+    if (!profile) {
         return <Preloader/>
+    }
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0]);
+        }
     }
     return (
         <div>
             <div className={s.descriptionBlock}>
-                <img alt='avatar'
-                     src={props.profile.photos && props.profile.photos.large ? props.profile.photos.large : userNoPhoto}/>
-                <ProfileStatusWitHooks status={props.status} updateStatus={props.updateStatus}/>
+                <img alt='avatar' src={(profile.photos && profile.photos.large) || userNoPhoto} className={s.mainPhoto}
+                     accept="image/*"/>
+                {isOwner && <input type='file' onChange={onMainPhotoSelected}/>}
+                <ProfileStatusWitHooks status={status} updateStatus={updateStatus}/>
                 <div>
                     <div>
-                        <h2>{props.profile.fullName}</h2>
+                        <h2>{profile.fullName}</h2>
                     </div>
                     <div>
-                        <span>{props.profile.aboutMe ? props.profile.aboutMe : ''}</span>
+                        <span>{profile.aboutMe ? profile.aboutMe : ''}</span>
                     </div>
                     <div>
-                        <span>{props.profile.lookingForAJob
-                            ? <span>{props.profile.lookingForAJobDescription}</span>
+                        <span>{profile.lookingForAJob
+                            ? <span>{profile.lookingForAJobDescription}</span>
                             : ''}
                         </span>
                     </div>

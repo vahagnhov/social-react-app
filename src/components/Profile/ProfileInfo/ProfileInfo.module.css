@@ -1,8 +1,12 @@
-.descriptionBlock{
+.descriptionBlock {
     padding: 10px;
 }
 
-.descriptionBlock img{
+.descriptionBlock img {
     width: 200px;
     border-radius: 50%;
+}
+
+.mainPhoto {
+    max-width: 200px;
 }
