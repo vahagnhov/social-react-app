@@ -16,5 +16,8 @@ export const profileAPI = {
         return APIBaseUrlInstance.put(`/profile/photo`, formData, {
             headers: {'Content-Type': 'multipart/form-data'}
         });
+    },
+    updateProfile: (profile) => {
+        return APIBaseUrlInstance.put(`/profile`, profile);
     }
 }
