@@ -1,8 +1,8 @@
 import {authAPI} from "../../api/authAPI";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const SET_CAPTCHA_URL = 'SET_CAPTCHA_URL';
+const SET_USER_DATA = 'AUTH_SET_USER_DATA';
+const SET_CAPTCHA_URL = 'AUTH_SET_CAPTCHA_URL';
 
 let initialState = {
     userId: null,
@@ -51,7 +51,7 @@ export const login = (email, password, rememberMe, captcha) => async (dispatch) 
         let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : 'Some Error';
         dispatch(stopSubmit('login', {_error: errorMessage}));
         if (response && response.data && response.data.resultCode === 10) {
-            getCaptchaUrl(dispatch);
+            dispatch(getCaptchaUrl);
         }
     }
 }

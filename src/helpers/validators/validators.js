@@ -20,6 +20,6 @@ export const validURL = value => {
         '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
         '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
         '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-    if (!pattern.test(value)) return `Invalid url format`;
+    if (value && !pattern.test(value)) return `Invalid url format`;
     return undefined;
 }
