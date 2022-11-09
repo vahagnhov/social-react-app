@@ -12,18 +12,16 @@
     color: gold;
 }
 
-.dialogs.dialog {
-
-}
-.dialog img{
+.dialog img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
+
 .messages {
     padding: 10px;
 }
 
 .messages.message {
-  color: white;
+    color: white;
 }

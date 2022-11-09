@@ -1,5 +1,6 @@
 import profileReducer, {addPostAC, deletePostAC} from "./profile-reducer";
 
+// 1. test data
 let state = {
     posts: [
         {id: 1, message: 'Hello, how are you?', likesCount: 8},
@@ -12,8 +13,6 @@ let newPostText = 'myDomains.com';
 
 test('New post should be added', () => {
 
-    // 1. test data
-
     // 2. action
     let action = addPostAC(newPostText);
     let newState = profileReducer(state, action);
@@ -24,8 +23,6 @@ test('New post should be added', () => {
 });
 
 test('Length of posts should be increment', () => {
-
-    // 1. test data
 
     // 2. action
     let action = addPostAC(newPostText);
@@ -38,8 +35,6 @@ test('Length of posts should be increment', () => {
 
 test('After deleting length of messages should be decrement', () => {
 
-    // 1. test data
-
     // 2. action
     let action = deletePostAC(1);
     let newState = profileReducer(state, action);
@@ -50,8 +45,6 @@ test('After deleting length of messages should be decrement', () => {
 });
 
 test('After deleting length of messages shouldn`t be decrement if id is incorrect', () => {
-
-    // 1. test data
 
     // 2. action
     let action = deletePostAC(1000);

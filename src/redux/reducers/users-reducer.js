@@ -26,12 +26,6 @@ export const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
-                /*users: state.users.map(u => {  //  users: {...state.users}
-                    if (u.id === action.userId) {
-                        return {...u, followed: true}
-                    }
-                    return u;
-                })*/
             }
 
         case UNFOLLOW:
@@ -109,18 +103,6 @@ const followUnFollowFlow = async (dispatch, userId, apiMethod, actionCreator) =>
     }
     dispatch(toggleFollowingProgress(false, userId));
 }
-
-/*export const follow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId));
-        followAPI.followUser(userId).then(response => {
-            if (response && response.data && response.data.resultCode === 0) {
-                dispatch(followSuccess(userId));
-            }
-            dispatch(toggleFollowingProgress(false, userId));
-        });
-    }
-}*/
 
 export const follow = (userId) => {
     return async (dispatch) => {

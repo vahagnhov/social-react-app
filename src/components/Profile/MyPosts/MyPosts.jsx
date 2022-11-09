@@ -17,7 +17,6 @@ const AddNewPostForm = (props) => {
             <div>
                 <button>Add Post</button>
             </div>
-            <button>Remove</button>
         </form>
     );
 }
@@ -25,17 +24,6 @@ const AddNewPostForm = (props) => {
 const AddNewPostReduxForm = reduxForm({form: 'profileAddNewPostForm'})(AddNewPostForm);
 
 const MyPosts = (props) => {
-
-    /*
-    For new versions of React js (starting from 2021) we may not use these features.
-       For old versions of react to get rid of the redraw component if there are no updates in props or states
-          1) If we are using a class component, we have 2 options use
-               a) shouldComponentUpdate(nextProps, nextState, nextContext) {
-                  return nextProps!=this.props || next state = this.state;
-              }
-              b) extend from React.PureComponent.
-          2) For a functional component, we can wrap React.memo((props) => {})
-    */
 
     let postsElements = [...props.posts].reverse().map(p => <Post key={p.id} id={p.id} message={p.message}
                                                    likes_count={p.likesCount}/>);
