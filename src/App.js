@@ -33,11 +33,11 @@ class App extends React.Component {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path='/' element={<Navigate to='/profile'/> }/>
-                        <Route path='/dialogs:id' element={withSuspense(DialogsContainer)}/>
+                        <Route path='/dialogs/:id' element={withSuspense(DialogsContainer)}/>
                         <Route path='/dialogs' element={withSuspense(DialogsContainer)}/>
                         <Route path='/profile/:userId' element={withSuspense(ProfileContainer)}/>
                         <Route path='/profile' element={withSuspense(ProfileContainer)}/>
-                        <Route path='/users' element={<UsersContainer/>}/>
+                        <Route path='/users' element={<UsersContainer pageTitle='myTestPageTitle'/>}/>
                         <Route path='/login' element={withSuspense(Login)}/>
                         <Route path='*' element={<div>404 NOT FOUND</div>}/>
                     </Routes>
