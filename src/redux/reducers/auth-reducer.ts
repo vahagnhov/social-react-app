@@ -1,5 +1,7 @@
 import {authAPI} from "../../api/authAPI";
 import {stopSubmit} from "redux-form";
+import {ThunkAction} from "redux-thunk";
+import {AppStateType} from "../redux-store";
 
 const SET_USER_DATA = 'AUTH_SET_USER_DATA';
 const SET_CAPTCHA_URL = 'AUTH_SET_CAPTCHA_URL';
@@ -14,7 +16,7 @@ let initialState = {
 
 export type InitialStateType = typeof initialState;
 
-export const authReducer = (state = initialState, action: any): InitialStateType => {
+export const authReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
 
     switch (action.type) {
         case SET_USER_DATA:
@@ -32,6 +34,7 @@ export const authReducer = (state = initialState, action: any): InitialStateType
     }
 };
 
+type ActionsTypes = SetAuthUserDataActionType | SetCaptchaActionType;
 
 type SetAuthUserDataPayloadActionType = {
     userId: number | null,
@@ -51,7 +54,9 @@ export const setAuthUserData = (userId: number | null, email: string | null, log
     payload: {userId, email, login, isAuth, captchaUrl}
 });
 
-export const getAuthUserData = () => async (dispatch: any) => {
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+
+export const getAuthUserData = (): ThunkType => async (dispatch) => {
     let response = await authAPI.authMe();
     if (response && response.data && response.data.resultCode === 0) {
         let {id, login, email} = response.data.data;
@@ -72,7 +77,7 @@ export const login = (email: string | null, password: string, rememberMe: boolea
     }
 }
 
-export const logout = () => async (dispatch: any) => {
+export const logout = (): ThunkType => async (dispatch) => {
     let response = await authAPI.logout();
     if (response && response.data && response.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false, null));
@@ -88,7 +93,7 @@ export const setCaptcha = (captchaUrl: string): SetCaptchaActionType => ({
     captchaUrl
 });
 
-export const getCaptchaUrl = async (dispatch: any) => {
+export const getCaptchaUrl: ThunkType = async (dispatch) => {
     let response = await authAPI.getCaptcha();
     let captchaUrl = response.data.url;
     dispatch(setCaptcha(captchaUrl));

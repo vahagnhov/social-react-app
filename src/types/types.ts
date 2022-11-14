@@ -53,3 +53,9 @@ export type DialogMessageType = {
     id: number,
     message: string,
 };
+
+export type FriendType = {
+    id: number,
+    name: string,
+    imgSrc: string | null
+}

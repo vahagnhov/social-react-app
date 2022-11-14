@@ -1,29 +1,34 @@
-import React from "react";
+import React, {FC} from "react";
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
+import {FriendType} from "../../types/types";
+import userNoPhoto from '../../assets/images/user.png'
 
-const Friend = (props) => {
+const Friend: FC<FriendType> = ({id, name, imgSrc}) => {
     return (
         <div className={s.friendBlock}>
-            <img alt='friend avatar' src={props.imgSrc}/>
+            {imgSrc ? <img alt='friend avatar' src={imgSrc}/> : <img alt='friend avatar' src={userNoPhoto}/>}
             <div>
-                {props.name}
+                {name}
             </div>
         </div>
     );
 };
 
-const Navbar = (props) => {
+type NavbarPropsType = {
+    friends: Array<FriendType>
+};
 
-    let state = props.sidebar;
-    let friends = state.friends.map(f => <Friend key={f.id} id={f.id} name={f.name} imgSrc={f.imgSrc}/>)
+const Navbar: FC<NavbarPropsType> = ({friends}) => {
+
+    let myFriends = friends.map(f => <Friend key={f.id} id={f.id} name={f.name} imgSrc={f.imgSrc}/>)
 
     return (
         <nav className={s.nav}>
             <div className={s.item}>
                 <NavLink to='/profile' className={(navData) => navData.isActive ? s.activeLink : ""}>Profile</NavLink>
             </div>
-            <div className={`${s.item} ${s.active}`}>
+            <div className={`${s.item} ${s.activeLink}`}>
                 <NavLink to='/dialogs' className={(navData) => navData.isActive ? s.activeLink : ""}>Messages</NavLink>
             </div>
             <div className={s.item}>
@@ -31,7 +36,7 @@ const Navbar = (props) => {
             </div>
             <div className={s.friend}>
                 <h2><span>Friends</span></h2>
-                {friends}
+                {myFriends}
             </div>
         </nav>
     );
