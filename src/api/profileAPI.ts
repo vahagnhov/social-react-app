@@ -29,7 +29,8 @@ export const profileAPI = {
         return APIBaseUrlInstance.get<any>(`/profile/status/${userId}`).then(res => res.data);
     },
     updateStatus: (status: string) => {
-        return APIBaseUrlInstance.put<UpdateStatusResponseType>(`/profile/status`, {status: status}).then(res => res.data);
+        return APIBaseUrlInstance.put<UpdateStatusResponseType>(`/profile/status`, {status: status})
+            .then(res => res.data);
     },
     updatePhoto: (photoFile: any) => {
         const formData = new FormData();
