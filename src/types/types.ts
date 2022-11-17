@@ -59,8 +59,3 @@ export type FriendType = {
     name: string,
     imgSrc: string | null
 }
-
-export enum ResultCodeEnum {
-    Success = 0,
-    Error = 1,
-}

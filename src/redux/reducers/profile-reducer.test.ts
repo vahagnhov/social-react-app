@@ -1,4 +1,4 @@
-import profileReducer, {addPostAC, deletePostAC} from "./profile-reducer";
+import profileReducer, {actions} from "./profile-reducer";
 
 // 1. test data
 let state = {
@@ -7,14 +7,17 @@ let state = {
         {id: 2, message: 'This is my first Post', likesCount: 50},
         {id: 3, message: 'This is my second Post', likesCount: 0},
         {id: 4, message: 'Thanks', likesCount: 17}
-    ]
+    ],
+    profile: null,
+    status: '',
+    newPostText: '',
 };
 let newPostText = 'myDomains.com';
 
 test('New post should be added', () => {
 
     // 2. action
-    let action = addPostAC(newPostText);
+    let action = actions.addPostAC(newPostText);
     let newState = profileReducer(state, action);
 
     // 3. expectation
@@ -25,7 +28,7 @@ test('New post should be added', () => {
 test('Length of posts should be increment', () => {
 
     // 2. action
-    let action = addPostAC(newPostText);
+    let action = actions.addPostAC(newPostText);
     let newState = profileReducer(state, action);
 
     // 3. expectation
@@ -36,7 +39,7 @@ test('Length of posts should be increment', () => {
 test('After deleting length of messages should be decrement', () => {
 
     // 2. action
-    let action = deletePostAC(1);
+    let action = actions.deletePostAC(1);
     let newState = profileReducer(state, action);
 
     // 3. expectation
@@ -47,7 +50,7 @@ test('After deleting length of messages should be decrement', () => {
 test('After deleting length of messages shouldn`t be decrement if id is incorrect', () => {
 
     // 2. action
-    let action = deletePostAC(1000);
+    let action = actions.deletePostAC(1000);
     let newState = profileReducer(state, action);
 
     // 3. expectation

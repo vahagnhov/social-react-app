@@ -1,5 +1,4 @@
-import {APIBaseUrlInstance} from "./config";
-import {ResultCodeEnum} from "../types/types";
+import {instance, ResultCodeEnum} from "./api";
 
 type FollowResponseType = {
     data: {}
@@ -9,9 +8,9 @@ type FollowResponseType = {
 
 export const followAPI = {
     followUser: (userId: number) => {
-        return APIBaseUrlInstance.post<FollowResponseType>(`/follow/${userId}`).then(res => res.data);
+        return instance.post<FollowResponseType>(`/follow/${userId}`).then(res => res.data);
     },
     unfollowUser:(userId: number) => {
-        return APIBaseUrlInstance.delete<FollowResponseType>(`/follow/${userId}`).then(res => res.data);
+        return instance.delete<FollowResponseType>(`/follow/${userId}`).then(res => res.data);
     }
 }

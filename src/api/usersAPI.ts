@@ -1,4 +1,4 @@
-import {APIBaseUrlInstance} from "./config";
+import {instance} from "./api";
 import {UserType} from "../types/types";
 
 type UsersResponseType = {
@@ -9,7 +9,7 @@ type UsersResponseType = {
 
 export const usersAPI = {
     getUsers: (currentPage = 1, pageSize = 10) => {
-        return APIBaseUrlInstance.get<UsersResponseType>(`/users`, {
+        return instance.get<UsersResponseType>(`/users`, {
             params: {
                 count: pageSize,
                 page: currentPage
