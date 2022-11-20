@@ -4,10 +4,11 @@ import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {AppStateType} from "../../redux/redux-store";
+import {DialogType, MessageType} from "../../types/types";
 
 type MapStateToPropsType = {
-    dialogs: any
-    messages: any
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
 };
 type MapDispatchToPropsType = {
     sendMessage: (newMessageBody: string) => void

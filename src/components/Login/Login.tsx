@@ -1,12 +1,13 @@
 import {InjectedFormProps, reduxForm} from "redux-form";
-import {createField, Input} from "../common/FormsControls/FormsControls";
-import {maxLengthCreator, minLengthCreator, required} from "../../helpers/validators/validators";
+import {createField, GetStringKeys, Input} from "../common/FormsControls/FormsControls";
+import {maxLengthCreator, minLengthCreator, required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login} from "../../redux/reducers/auth-reducer";
 import {Navigate} from "react-router-dom";
 import React, {FC} from "react";
 import s from './../common/FormsControls/FormsControls.module.css';
 import {AppStateType} from "../../redux/redux-store";
+import {NewMessageFormValuesType} from "../Dialogs/Dialogs";
 
 let maxLength30 = maxLengthCreator(30);
 let minLength7 = minLengthCreator(7);
@@ -70,7 +71,7 @@ type LoginFormValuesType = {
     rememberMe: boolean,
     captcha: string | null
 }
-type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType,string>;
+type LoginFormValuesTypeKeys = GetStringKeys<LoginFormValuesType>;
 
 const Login: FC<PropsType> = (props) => {
     const onSubmitLogin = (formData: LoginFormValuesType) => {

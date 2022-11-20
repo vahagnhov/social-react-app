@@ -5,18 +5,18 @@ import cn from "classnames";
 type PropsType = {
     totalItemsCount: number
     pageSize: number
-    currentPage: number
-    onPageChange: (pageNumber: number) => void
+    currentPage?: number
+    onPageChange?: (pageNumber: number) => void
     portionSize?: number
 };
 
 const Paginator: FC<PropsType> = ({
-                                  totalItemsCount,
-                                  pageSize,
-                                  currentPage,
-                                  onPageChange,
-                                  portionSize = 10
-                              }) => {
+                                      totalItemsCount,
+                                      pageSize,
+                                      currentPage = 1,
+                                      onPageChange = x => x,
+                                      portionSize = 10
+                                  }) => {
     let pagesCount = Math.ceil(totalItemsCount / pageSize);
 
     let pages: Array<number> = [];
@@ -32,9 +32,9 @@ const Paginator: FC<PropsType> = ({
     return (
         <div className={s.paginator}>
             {portionNumber > 1 &&
-            <button className={s.arrow} onClick={() => {
-                setPortionNumber(portionNumber - 1)
-            }}>PREV</button>}
+                <button className={s.arrow} onClick={() => {
+                    setPortionNumber(portionNumber - 1)
+                }}>PREV</button>}
 
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -48,9 +48,9 @@ const Paginator: FC<PropsType> = ({
                                  }}>{p}</span>
                 })}
             {portionCount > portionNumber &&
-            <button className={s.arrow} onClick={() => {
-                setPortionNumber(portionNumber + 1)
-            }}>NEXT</button>}
+                <button className={s.arrow} onClick={() => {
+                    setPortionNumber(portionNumber + 1)
+                }}>NEXT</button>}
 
 
         </div>

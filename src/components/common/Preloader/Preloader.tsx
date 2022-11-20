@@ -1,7 +1,7 @@
-import React from "react";
+import React, {FC} from "react";
 import preloader from "../../../assets/images/preloader.gif";
 
-let Preloader = () => {
+let Preloader: FC = () => {
     return (
         <div style={{backgroundColor: 'white'}}>
             <img alt='preloader' src={preloader}/>

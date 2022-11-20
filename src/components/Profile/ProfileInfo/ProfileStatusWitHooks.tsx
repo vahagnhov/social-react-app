@@ -1,6 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, FC, useEffect, useState} from "react";
 
-const ProfileStatusWitHooks = (props) => {
+type PropsType = {
+    status: string
+    updateStatus: (status: string) => void
+}
+const ProfileStatusWitHooks: FC<PropsType> = (props) => {
 
     let [editMode, setEditMode] = useState(false);
 
@@ -19,7 +23,7 @@ const ProfileStatusWitHooks = (props) => {
         props.updateStatus(status);
     }
 
-    const onStateChange = (e) => {
+    const onStateChange = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value);
     }
 

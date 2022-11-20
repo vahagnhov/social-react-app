@@ -6,7 +6,6 @@ import {PostType} from "../../../types/types";
 
 type MapStateToPropsType = {
     posts: Array<PostType>
-    newPostText: string
 };
 
 type MapDispatchToPropsType = {
@@ -17,8 +16,7 @@ type OwnPropsType = {};
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
-        posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
+        posts: state.profilePage.posts
     }
 }
 let mapDispatchToProps = (dispatch: any): MapDispatchToPropsType => {

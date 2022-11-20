@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {FriendType} from "../../types/types";
 import userNoPhoto from '../../assets/images/user.png'
 
-const Friend: FC<FriendType> = ({id, name, imgSrc}) => {
+const Friend: FC<FriendType> = ({name, imgSrc}) => {
     return (
         <div className={s.friendBlock}>
             {imgSrc ? <img alt='friend avatar' src={imgSrc}/> : <img alt='friend avatar' src={userNoPhoto}/>}

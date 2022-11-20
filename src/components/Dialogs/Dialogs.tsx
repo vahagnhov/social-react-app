@@ -11,12 +11,16 @@ type PropsType = {
     sendMessage: (newMessage: string) => void
 };
 
+export type NewMessageFormValuesType = {
+    newMessageBody: string
+}
+
 const Dialogs: FC<PropsType> = ({dialogs, messages, sendMessage}) => {
 
     let dialogsElements = dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name} imgSrc={d.imgSrc}/>);
     let messagesElements = messages.reverse().map(m => <Message key={m.id} id={m.id} message={m.message}/>);
 
-    let addNewMessage = (formData: any) => {
+    let addNewMessage = (formData: NewMessageFormValuesType) => {
         sendMessage(formData.newMessageBody);
     }
 

@@ -2,7 +2,6 @@ import React, {FC} from "react";
 import s from './Post.module.css';
 
 type PropsType = {
-    id: number
     message: string
     likes_count: number
 };

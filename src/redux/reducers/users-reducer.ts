@@ -1,6 +1,6 @@
 import {usersAPI} from "../../api/usersAPI";
 import {followAPI} from "../../api/followAPI";
-import {updateObjectInArray} from "../../helpers/object-helpers/object-helpers";
+import {updateObjectInArray} from "../../utils/object-helpers/object-helpers";
 import {UserType} from "../../types/types";
 import {BaseThunkType, InferActionsTypes} from "../redux-store";
 import {Dispatch} from "redux";
