@@ -19,7 +19,7 @@ export enum ResultCodeEnum {
     Error = 1,
 }
 
-export type ResponseType<D = {}, RC = ResultCodeEnum> = {
+export type APIResponseType<D = {}, RC = ResultCodeEnum> = {
     data: D
     resultCode: RC
     messages: Array<string>

@@ -1,16 +1,10 @@
-import {instance, ResultCodeEnum} from "./api";
-
-type FollowResponseType = {
-    data: {}
-    resultCode: ResultCodeEnum
-    messages: Array<string>
-};
+import {APIResponseType, instance, ResultCodeEnum} from "./api";
 
 export const followAPI = {
     followUser: (userId: number) => {
-        return instance.post<FollowResponseType>(`/follow/${userId}`).then(res => res.data);
+        return instance.post<APIResponseType>(`/follow/${userId}`).then(res => res.data);
     },
     unfollowUser:(userId: number) => {
-        return instance.delete<FollowResponseType>(`/follow/${userId}`).then(res => res.data);
+        return instance.delete(`/follow/${userId}`).then(res => res.data) as Promise<APIResponseType>;
     }
 }

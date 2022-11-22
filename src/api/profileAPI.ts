@@ -1,5 +1,5 @@
 import {PhotosType, ProfileType} from "../types/types";
-import {instance, ResponseType} from "./api";
+import {instance, APIResponseType} from "./api";
 
 type UpdatePhotoResponseType = {
     photos: PhotosType
@@ -13,17 +13,17 @@ export const profileAPI = {
         return instance.get<any>(`/profile/status/${userId}`).then(res => res.data);
     },
     updateStatus: (status: string) => {
-        return instance.put<ResponseType>(`/profile/status`, {status: status})
+        return instance.put<APIResponseType>(`/profile/status`, {status: status})
             .then(res => res.data);
     },
     updatePhoto: (photoFile: any) => {
         const formData = new FormData();
         formData.append('image', photoFile);
-        return instance.put<ResponseType<UpdatePhotoResponseType>>(`/profile/photo`, formData, {
+        return instance.put<APIResponseType<UpdatePhotoResponseType>>(`/profile/photo`, formData, {
             headers: {'Content-Type': 'multipart/form-data'}
         }).then(res => res.data);
     },
     updateProfile: (profile: ProfileType) => {
-        return instance.put<ResponseType>(`/profile`, profile).then(res => res.data);
+        return instance.put<APIResponseType>(`/profile`, profile).then(res => res.data);
     }
 }

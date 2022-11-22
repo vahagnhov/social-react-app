@@ -7,7 +7,6 @@ import {Navigate} from "react-router-dom";
 import React, {FC} from "react";
 import s from './../common/FormsControls/FormsControls.module.css';
 import {AppStateType} from "../../redux/redux-store";
-import {NewMessageFormValuesType} from "../Dialogs/Dialogs";
 
 let maxLength30 = maxLengthCreator(30);
 let minLength7 = minLengthCreator(7);
