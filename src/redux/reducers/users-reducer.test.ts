@@ -26,7 +26,11 @@ beforeEach(() => { // after 1 expect , go and get original state
         totalUsersCount: 0,
         currentPage: 1,
         isFetching: false,
-        followingInProgress: []
+        followingInProgress: [],
+        filter: {
+            term: '',
+            friend: 'all' as string | boolean
+        }
     }
 
 })
