@@ -14,7 +14,7 @@ import {
 } from "../../redux/selectors/users-selectors";
 import {AppDispatchType} from "../../redux/redux-store";
 import {useLocation, useNavigate} from "react-router-dom";
-import * as queryString from "querystring";
+import * as queryString from "query-string";
 
 type PropsType = {};
 
