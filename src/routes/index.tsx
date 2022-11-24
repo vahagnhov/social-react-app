@@ -1,17 +1,17 @@
 import React, {FC} from "react";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {withSuspense} from "../hoc/withSuspense";
-import UsersContainer from "../components/Users/UsersContainer";
+import {UsersPage} from "../components/Users/UsersContainer";
 import PageNotFound from "../errors/PageNotFound";
 
 const DialogsContainer = React.lazy(() => import('../components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import ('../components/Profile/ProfileContainer'));
-const Login = React.lazy(() => import ('../components/Login/Login'));
+const LoginPage = React.lazy(() => import ('../components/Login/Login'));
 
 const SuspendedDialogs = withSuspense(DialogsContainer);
 const SuspendedProfile = withSuspense(ProfileContainer);
-const SuspendedLogin = withSuspense(Login);
-const UsersContainerComponent = () => <UsersContainer pageTitle='TotalUsersCount'/>;
+const SuspendedLogin = withSuspense(LoginPage);
+const UsersContainerComponent = () => <UsersPage pageTitle='TotalUsersCount'/>;
 const HomePage = () => <Navigate to='/profile'/>;
 const NotFoundErrorPage = () => <PageNotFound/>;
 
