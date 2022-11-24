@@ -29,7 +29,7 @@ beforeEach(() => { // after 1 expect , go and get original state
         followingInProgress: [],
         filter: {
             term: '',
-            friend: 'all' as string | boolean
+            friend: null as null | boolean
         }
     }
 

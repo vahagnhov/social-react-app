@@ -15,7 +15,7 @@ let initialState = {
     followingInProgress: [] as Array<number>,  // array of followed user ids
     filter: {
         term: '',
-        friend: 'all' as string | boolean
+        friend: null as null | boolean
     }
 };
 
