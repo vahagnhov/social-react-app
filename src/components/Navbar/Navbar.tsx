@@ -1,6 +1,5 @@
 import React, {FC} from "react";
 import s from './Navbar.module.css';
-import {NavLink} from "react-router-dom";
 import {FriendType} from "../../types/types";
 import userNoPhoto from '../../assets/images/user.png'
 
@@ -25,15 +24,6 @@ const Navbar: FC<NavbarPropsType> = ({friends}) => {
 
     return (
         <nav className={s.nav}>
-            <div className={s.item}>
-                <NavLink to='/profile' className={(navData) => navData.isActive ? s.activeLink : ""}>Profile</NavLink>
-            </div>
-            <div className={`${s.item} ${s.activeLink}`}>
-                <NavLink to='/dialogs' className={(navData) => navData.isActive ? s.activeLink : ""}>Messages</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/users' className={(navData) => navData.isActive ? s.activeLink : ""}>Users</NavLink>
-            </div>
             <div className={s.friend}>
                 <h2><span>Friends</span></h2>
                 {myFriends}

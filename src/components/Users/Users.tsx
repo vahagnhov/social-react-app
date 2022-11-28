@@ -68,7 +68,7 @@ const Users: FC<PropsType> = () => {
         if (currentPage !== 1) query.page = String(currentPage)
 
         navigate({
-            pathname: '/users',
+            pathname: '/developers',
             search: queryString.stringify(query)
 
         });

@@ -37,7 +37,7 @@ const routes = [
         component: SuspendedProfile
     },
     {
-        path: '/users',
+        path: '/developers',
         component: UsersContainerComponent
     },
     {
