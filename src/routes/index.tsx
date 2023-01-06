@@ -7,10 +7,12 @@ import PageNotFound from "../errors/PageNotFound";
 const DialogsContainer = React.lazy(() => import('../components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import ('../components/Profile/ProfileContainer'));
 const LoginPage = React.lazy(() => import ('../components/Login/Login'));
+const ChatPage = React.lazy(() => import ('../pages/Chat/ChatPage'));
 
 const SuspendedDialogs = withSuspense(DialogsContainer);
 const SuspendedProfile = withSuspense(ProfileContainer);
 const SuspendedLogin = withSuspense(LoginPage);
+const SuspendedChatPage = withSuspense(ChatPage);
 const UsersContainerComponent = () => <UsersPage pageTitle='TotalUsersCount'/>;
 const HomePage = () => <Navigate to='/profile'/>;
 const NotFoundErrorPage = () => <PageNotFound/>;
@@ -43,6 +45,10 @@ const routes = [
     {
         path: '/login',
         component: SuspendedLogin
+    },
+    {
+        path: '/chat',
+        component: SuspendedChatPage
     },
     {
         path: '*',

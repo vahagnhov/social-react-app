@@ -63,6 +63,9 @@ class App extends React.Component<MapStateToPropsType & MapDispatchToPropsType> 
                                 <SubMenu key="sub2" icon={<LaptopOutlined/>} title="Developers">
                                     <Menu.Item key="3"><Link to="/developers">Developers</Link></Menu.Item>
                                 </SubMenu>
+                                <SubMenu key="sub3" icon={<LaptopOutlined/>} title="Chat">
+                                    <Menu.Item key="4"><Link to="/chat">Chat</Link></Menu.Item>
+                                </SubMenu>
                             </Menu>
                         </Sider>
                         <Content style={{padding: '0 24px', minHeight: 280}}>
